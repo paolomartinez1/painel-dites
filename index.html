@@ -24,6 +24,7 @@
   --accent:#6cc4a0; --accent-soft:#1e3a2f; --on-accent:#0d1512;
   --ok:#7fcf95; --ok-soft:#1d3324; --warn:#e6b35c; --warn-soft:#3a2d14; --bad:#f08a80; --bad-soft:#3d1f1c; --gap:#b4a9f0; --gap-soft:#2a2645; color-scheme:dark}}
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{margin:0}
 body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.5}
 .wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -230,7 +231,7 @@ async function unlock(code,silent){
   try{
     D=await decrypt(code.trim().toUpperCase());
     try{sessionStorage.setItem("painel-dites-c",code.trim().toUpperCase())}catch(e){}
-    $("lock").hidden=true;$("app").hidden=false;start();
+    $("lockerr").textContent="";$("lock").hidden=true;$("app").hidden=false;start();
   }catch(e){
     try{sessionStorage.removeItem("painel-dites-c")}catch(_){}
     $("lockerr").textContent=silent?"":"Código inválido ou dados indisponíveis.";
@@ -300,7 +301,7 @@ function renderReuniao(){
   const sec=[
     ["Prazo vencido",all.filter(vencida)],
     ["Vencem nos próximos 15 dias",all.filter(t=>t.prazo&&t.situacao!=="concluida"&&t.prazo>=h&&t.prazo<=h15)],
-    ["Falta informação (responsável, prazo ou andamento)",all.filter(t=>t.situacao==="sem_info"&&!vencida(t))],
+    ["Falta informação (responsável, prazo ou andamento)",all.filter(t=>t.situacao==="sem_info"&&!vencida(t)&&!(t.prazo&&t.prazo>=h&&t.prazo<=h15))],
     ["Demais em andamento ou não iniciadas",all.filter(t=>(t.situacao==="andamento"||t.situacao==="nao_iniciada")&&!vencida(t)&&!(t.prazo&&t.prazo>=h&&t.prazo<=h15))],
     ["Alteradas nesta reunião (concluídas)",all.filter(t=>t.changed&&t.situacao==="concluida")]
   ];
