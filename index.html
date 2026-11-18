@@ -12,7 +12,7 @@
 /* Painel de planejamento: cabeçalho fixo com abas; visão geral por frente/meta; modo reunião por frente com registro de alterações. */
 :root{
   --bg:#f5f6f4; --surface:#ffffff; --fg:#1d2420; --muted:#5f6b64; --line:#dde2de;
-  --accent:#1f6b52; --accent-soft:#e3efe9; --on-accent:#ffffff;
+  --accent:#1f6b52; --accent-soft:#e3efe9; --on-accent:#ffffff; --prog:#2f6db3; --prog-soft:#e2ecf8;
   --ok:#2f7d4a; --ok-soft:#e2f2e7; --warn:#a1620a; --warn-soft:#fbefd9; --bad:#b0352b; --bad-soft:#f8e3e0; --gap:#5b4fa0; --gap-soft:#ebe8f7;
   --f-display:"IBM Plex Sans Condensed","Arial Narrow",system-ui,sans-serif;
   --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -21,7 +21,7 @@
 }
 @media (prefers-color-scheme: dark){:root{
   --bg:#121614; --surface:#1a201d; --fg:#e4e9e5; --muted:#9aa69f; --line:#2c3531;
-  --accent:#6cc4a0; --accent-soft:#1e3a2f; --on-accent:#0d1512;
+  --accent:#6cc4a0; --accent-soft:#1e3a2f; --on-accent:#0d1512; --prog:#7fb0ec; --prog-soft:#1c2c42;
   --ok:#7fcf95; --ok-soft:#1d3324; --warn:#e6b35c; --warn-soft:#3a2d14; --bad:#f08a80; --bad-soft:#3d1f1c; --gap:#b4a9f0; --gap-soft:#2a2645; color-scheme:dark}}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -91,7 +91,7 @@ td.si{min-width:190px}
 td.si small{display:block;color:var(--muted);font-size:12px}
 .pill{display:inline-block;font-size:12px;font-weight:500;padding:2px 8px;border-radius:999px;margin:0 4px 3px 0;white-space:nowrap}
 .p-concluida{background:var(--ok-soft);color:var(--ok)}
-.p-andamento{background:var(--accent-soft);color:var(--accent)}
+.p-andamento{background:var(--prog-soft);color:var(--prog)}
 .p-nao_iniciada{background:var(--line);color:var(--muted)}
 .p-sem_info{background:var(--gap-soft);color:var(--gap)}
 .p-vencida{background:var(--bad-soft);color:var(--bad)}
@@ -137,6 +137,49 @@ dialog h4{margin:0 0 6px;font-size:13px;text-transform:uppercase;letter-spacing:
 .hist{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:13px}
 .hist li{border-left:3px solid var(--line);padding-left:8px}
 .hist time{font-family:var(--f-mono);color:var(--muted);margin-right:6px}
+/* EAP em mosaico */
+.root{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;max-width:760px;margin:0 auto}
+.root h2{font-family:var(--f-display);font-size:22px;margin:0}
+.root .nums{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--muted)}
+.root .nums b{font-family:var(--f-mono);color:var(--fg);font-weight:500}
+.legend2{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 14px;font-size:12px;color:var(--muted);margin:10px 0 0}
+.legend2 i{display:inline-block;width:11px;height:11px;border-radius:2px;vertical-align:-1px;margin-right:5px}
+.trunk{width:2px;height:18px;background:var(--line);margin:0 auto}
+.eap{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;border-top:2px solid var(--line);padding-top:16px;position:relative}
+.col{display:flex;flex-direction:column;gap:10px;min-width:0;position:relative}
+.col::before{content:"";position:absolute;top:-18px;left:50%;width:2px;height:16px;background:var(--line)}
+.fbox{background:var(--fg);color:var(--bg);border-radius:8px;padding:10px 12px;display:grid;gap:6px}
+.fbox .fn{font-family:var(--f-display);font-weight:600;font-size:16px;line-height:1.2}
+.fbox .fw{font-size:12px;opacity:.8}
+.fbox .fs{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:12px}
+.fbox .fs .v{color:var(--bad-soft)}
+.fbox button{justify-self:start;background:transparent;border:1px solid currentColor;color:inherit;border-radius:5px;padding:2px 8px;font-size:12px;cursor:pointer;opacity:.9}
+.bar{height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.fbox .bar{background:color-mix(in srgb,var(--bg) 25%,transparent)}
+.bar span{display:block;height:100%;background:var(--ok)}
+.mbox{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 11px;display:grid;gap:7px;transition:box-shadow .15s,border-color .15s}
+.mbox.late{border-color:var(--bad);box-shadow:inset 3px 0 0 var(--bad)}
+.mbox.hl{box-shadow:0 0 0 2px var(--warn)}
+.mbox .mt{all:unset;cursor:pointer;display:grid;gap:2px}
+.mbox .mt:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mbox .mt b{font-size:14px;font-weight:600;line-height:1.25}
+.mbox .mt small{font-size:12px;color:var(--muted)}
+.mbox .mt small .code{margin-right:6px}
+.sq{display:flex;flex-wrap:wrap;gap:4px}
+.sq button{width:16px;height:16px;border-radius:3px;border:0;padding:0;cursor:pointer}
+.sq button:hover{transform:scale(1.25)}
+.sq button.chg{outline:2px solid var(--warn);outline-offset:1px}
+.c-concluida{background:var(--ok)} .c-andamento{background:var(--prog)} .c-nao_iniciada{background:var(--muted);opacity:.45} .c-sem_info{background:var(--gap)} .c-vencida{background:var(--bad)}
+.links{display:flex;flex-wrap:wrap;gap:4px}
+.link{font-size:11px;padding:1px 6px;border-radius:4px;border:1px dashed var(--warn);color:var(--warn);background:transparent;cursor:default}
+.mlist{list-style:none;margin:0;padding:0;display:grid;gap:4px;border-top:1px solid var(--line);padding-top:6px}
+.mlist li{font-size:12.5px;display:flex;gap:6px;align-items:baseline}
+.mlist li i{flex:none;width:9px;height:9px;border-radius:2px;display:inline-block}
+.mlist button{all:unset;cursor:pointer}
+.mlist button:hover{text-decoration:underline}
+#tip{position:fixed;z-index:20;pointer-events:none;background:var(--fg);color:var(--bg);font-size:12px;padding:5px 8px;border-radius:5px;max-width:280px}
+@media (max-width:1000px){.eap{grid-template-columns:repeat(2,minmax(0,1fr))}.col::before{display:none}}
+@media (max-width:560px){.eap{grid-template-columns:minmax(0,1fr)}}
 .foot{margin-top:40px;font-size:12px;color:var(--muted);display:grid;gap:4px}
 @media (max-width:640px){
   thead{display:none}
@@ -165,14 +208,22 @@ dialog h4{margin:0 0 6px;font-size:13px;text-transform:uppercase;letter-spacing:
   <div class="top"><div class="wrap">
     <span class="brand">Painel DITES<small id="upd"></small></span>
     <nav>
-      <a href="#geral" id="nav-geral">Visão geral</a>
+      <a href="#eap" id="nav-eap">EAP</a>
+      <a href="#geral" id="nav-geral">Lista</a>
       <a href="#reuniao" id="nav-reuniao">Reunião</a>
     </nav>
     <button class="lockbtn" id="relock" type="button">Sair</button>
   </div></div>
 
   <main class="wrap">
-    <div id="v-geral">
+    <div id="v-eap" hidden>
+      <div class="root" id="eaproot"></div>
+      <div class="legend2"><span><i class="c-concluida"></i>Concluída</span><span><i class="c-andamento"></i>Em andamento</span><span><i class="c-nao_iniciada"></i>Não iniciada</span><span><i class="c-sem_info"></i>Falta informação</span><span><i class="c-vencida"></i>Prazo vencido</span><span>Cada quadrado é uma tarefa · clique para ver o detalhe · clique no nome da meta para listar as tarefas</span></div>
+      <div class="trunk"></div>
+      <div class="eap" id="eap"></div>
+      <div id="tip" hidden></div>
+    </div>
+    <div id="v-geral" hidden>
       <div class="tally" id="tally"></div>
       <div class="controls">
         <input type="search" id="q" placeholder="Buscar tarefa, pessoa ou fonte" aria-label="Buscar">
@@ -340,7 +391,7 @@ function save(){try{localStorage.setItem(DRAFT,JSON.stringify({base:D.atualizado
 function load(){try{const s=JSON.parse(localStorage.getItem(DRAFT)||"null");if(s){chg=s.alteracoes||[];if(s.reuniao){$("rdata").value=s.reuniao.data||today();$("rfrente").value=s.reuniao.frente||"todas";$("rtitulo").value=s.reuniao.titulo||""}}}catch(e){}}
 function refresh(){
   $("changes").hidden=chg.length===0;$("nchg").textContent=chg.length;$("copyok").textContent="";
-  renderGeral();if(!$("v-reuniao").hidden)renderReuniao();
+  renderGeral();if(!$("v-reuniao").hidden)renderReuniao();if(!$("v-eap").hidden)renderEAP();
 }
 $("copy").addEventListener("click",()=>{
   const txt="ALTERAÇÕES DO PAINEL DITES\n"+JSON.stringify({base:D.atualizado_em,reuniao:{data:$("rdata").value,frente:$("rfrente").value,titulo:$("rtitulo").value},alteracoes:chg},null,1);
@@ -369,13 +420,54 @@ document.addEventListener("click",e=>{
 });
 $("dclose").addEventListener("click",()=>$("dlg").close());
 
+/* ---------- EAP em mosaico ---------- */
+const abertos=new Set();
+const cor=t=>vencida(t)?"vencida":t.situacao;
+const pct=l=>l.length?Math.round(100*l.filter(t=>t.situacao==="concluida").length/l.length):0;
+function renderEAP(){
+  const all=D.tarefas.map(eff);
+  const nv=all.filter(vencida).length,ns=all.filter(t=>t.situacao==="sem_info").length,nc=all.filter(t=>t.situacao==="concluida").length;
+  $("eaproot").innerHTML=`<h2>Diretoria de Tesouraria</h2><div class="nums"><span><b>${all.length}</b> tarefas</span><span><b>${D.metas.length}</b> metas</span><span><b>${nc}</b> concluídas</span><span><b>${nv}</b> com prazo vencido</span><span><b>${ns}</b> com falta de informação</span></div><div class="bar" style="flex:1 1 160px" title="${pct(all)}% concluído"><span style="width:${pct(all)}%"></span></div>`;
+  const sqs=l=>`<div class="sq">${l.map(t=>`<button type="button" class="c-${cor(t)}${t.changed?" chg":""}" data-open="${esc(t.id)}" data-tip="${esc(t.id+" · "+t.titulo+" · "+(vencida(t)?"prazo vencido":SIT[t.situacao])+" · prazo "+t.prazo_texto)}" aria-label="${esc(t.id+" "+t.titulo)}"></button>`).join("")}</div>`;
+  const lista=l=>`<ul class="mlist">${l.map(t=>`<li><i class="c-${cor(t)}"></i><button type="button" data-open="${esc(t.id)}">${esc(t.id)} ${esc(t.titulo)}</button></li>`).join("")}</ul>`;
+  const nomeF=id=>{const f=D.frentes.find(x=>x.id===id);return f.num?"Frente "+f.num:f.nome};
+  $("eap").innerHTML=D.frentes.map(fr=>{
+    const ft=all.filter(t=>t.frente===fr.id);
+    const fv=ft.filter(vencida).length,fs=ft.filter(t=>t.situacao==="sem_info").length;
+    const apoia=D.metas.filter(m=>(m.apoio||[]).includes(fr.id)||(m.compartilhada_com||[]).includes(fr.id)).sort((a,b)=>+a.codigo.slice(1)-+b.codigo.slice(1));
+    const metas=D.metas.filter(m=>m.frente===fr.id).map(m=>{
+      const l=ft.filter(t=>t.meta===m.codigo);const late=l.some(vencida);const k="m-"+m.codigo;
+      const lk=[...(m.compartilhada_com||[]).map(f=>`<span class="link" data-hl="${f}">compartilhada com ${esc(nomeF(f))}</span>`),...(m.apoio||[]).map(f=>`<span class="link" data-hl="${f}">apoio normativo: ${esc(nomeF(f))}</span>`),...m.rotulos.filter(r=>r==="Ponto crítico").map(r=>`<span class="tag crit">${r}</span>`)].join("");
+      return `<div class="mbox${late?" late":""}" data-meta="${m.codigo}" data-f="${fr.id}">
+        <button type="button" class="mt" data-toggle="${k}" aria-expanded="${abertos.has(k)}"><b>${esc(m.nome)}</b><small><span class="code">${m.codigo}</span>prazo ${br(m.prazo)} · ${pct(l)}% concluído</small></button>
+        <div class="bar"><span style="width:${pct(l)}%"></span></div>${sqs(l)}${lk?`<div class="links">${lk}</div>`:""}${abertos.has(k)?lista(l):""}</div>`;
+    }).join("");
+    const sm=ft.filter(t=>!t.meta);const k="s-"+fr.id;
+    const smb=sm.length?`<div class="mbox${sm.some(vencida)?" late":""}" data-f="${fr.id}"><button type="button" class="mt" data-toggle="${k}" aria-expanded="${abertos.has(k)}"><b>Sem meta</b><small>${sm.length} tarefas</small></button>${sqs(sm)}${abertos.has(k)?lista(sm):""}</div>`:"";
+    const ap=apoia.length?`<div class="links">${apoia.map(m=>`<span class="link" data-hlm="${m.codigo}">${(m.apoio||[]).includes(fr.id)?"apoia":"compartilha"} ${m.codigo}</span>`).join("")}</div>`:"";
+    return `<div class="col"><div class="fbox"><span class="fn">${esc(frenteNome(fr.id))}</span><span class="fw">${esc(fr.ponto_focal)}</span><div class="bar"><span style="width:${pct(ft)}%"></span></div><span class="fs"><span>${ft.length} tarefas</span><span class="v">${fv} vencidas</span><span>${fs} sem info</span></span><button type="button" data-pauta="${fr.id}">Pauta da reunião</button></div>${ap}${metas}${smb}</div>`;
+  }).join("");
+}
+$("eap").addEventListener("click",e=>{
+  const tg=e.target.closest("[data-toggle]");if(tg){const k=tg.dataset.toggle;abertos.has(k)?abertos.delete(k):abertos.add(k);renderEAP();return}
+  const p=e.target.closest("[data-pauta]");if(p){$("rfrente").value=p.dataset.pauta;save();location.hash="#reuniao"}
+});
+function hl(on,el){
+  const f=el.dataset.hl,m=el.dataset.hlm;
+  document.querySelectorAll(f?`.mbox[data-f="${f}"]`:`.mbox[data-meta="${m}"]`).forEach(b=>b.classList.toggle("hl",on));
+}
+$("eap").addEventListener("mouseover",e=>{
+  const l=e.target.closest(".link");if(l)hl(true,l);
+  const s=e.target.closest("[data-tip]");if(s){const tip=$("tip");tip.textContent=s.dataset.tip;tip.hidden=false;const r=s.getBoundingClientRect();tip.style.left=Math.min(r.left,innerWidth-290)+"px";tip.style.top=(r.bottom+6)+"px"}
+});
+$("eap").addEventListener("mouseout",e=>{const l=e.target.closest(".link");if(l)hl(false,l);if(e.target.closest("[data-tip]"))$("tip").hidden=true});
+
 /* ---------- navegação ---------- */
 function route(){
-  const r=location.hash==="#reuniao"?"reuniao":"geral";
-  $("v-geral").hidden=r!=="geral";$("v-reuniao").hidden=r!=="reuniao";
-  $("nav-geral").toggleAttribute("aria-current",r==="geral");$("nav-reuniao").toggleAttribute("aria-current",r==="reuniao");
-  if(r==="geral")$("nav-geral").setAttribute("aria-current","page");else $("nav-reuniao").setAttribute("aria-current","page");
-  r==="reuniao"?renderReuniao():renderGeral();
+  const r=location.hash==="#reuniao"?"reuniao":location.hash==="#geral"?"geral":"eap";
+  for(const v of ["eap","geral","reuniao"]){$("v-"+v).hidden=v!==r;const a=$("nav-"+v);v===r?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")}
+  $("tip").hidden=true;
+  r==="reuniao"?renderReuniao():r==="geral"?renderGeral():renderEAP();
 }
 function start(){
   $("upd").textContent="dados de "+br(D.atualizado_em);
