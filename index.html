@@ -180,6 +180,101 @@ dialog h4{margin:0 0 6px;font-size:13px;text-transform:uppercase;letter-spacing:
 #tip{position:fixed;z-index:20;pointer-events:none;background:var(--fg);color:var(--bg);font-size:12px;padding:5px 8px;border-radius:5px;max-width:280px}
 @media (max-width:1000px){.eap{grid-template-columns:repeat(2,minmax(0,1fr))}.col::before{display:none}}
 @media (max-width:560px){.eap{grid-template-columns:minmax(0,1fr)}}
+/* visões adicionais */
+nav{flex-wrap:wrap;justify-content:flex-end}
+.vh{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;margin-bottom:12px}
+.vh h2{font-family:var(--f-display);font-size:22px;margin:0}
+.vh p{margin:0;color:var(--muted);font-size:13px;max-width:80ch}
+.prop{font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;padding:1px 5px;border-radius:3px;background:var(--warn-soft);color:var(--warn);white-space:nowrap}
+.fchip{font-size:11px;padding:1px 6px;border-radius:4px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+/* bloqueios */
+.lanes{display:grid;gap:12px}
+.lane{display:grid;grid-template-columns:200px minmax(0,1fr);gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px}
+.lane .who{display:grid;align-content:start;gap:2px}
+.lane .who b{font-family:var(--f-display);font-size:17px}
+.lane .who span{font-size:12px;color:var(--muted)}
+.lane .items{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px}
+.bk{border:1px solid var(--line);border-radius:6px;padding:8px 10px;display:grid;gap:4px;font-size:13px;background:var(--bg)}
+.bk .t{all:unset;cursor:pointer;font-weight:600;font-size:13.5px}
+.bk .t:hover{text-decoration:underline}
+.bk .m{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center;color:var(--muted);font-size:12px}
+.days{font-family:var(--f-mono);font-weight:500}
+.days.d60{color:var(--bad)} .days.d30{color:var(--warn)}
+@media (max-width:640px){.lane{grid-template-columns:minmax(0,1fr)}}
+/* marcos */
+.tl{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 0 14px;overflow-x:auto}
+.tl-in{min-width:900px;position:relative}
+.tl-row{display:grid;grid-template-columns:170px 1fr;align-items:center;min-height:44px;border-top:1px solid var(--line)}
+.tl-row:first-child{border-top:0}
+.tl-row .lb{font-size:13px;font-weight:600;padding:0 12px;line-height:1.2}
+.tl-row .lb small{display:block;font-weight:400;color:var(--muted);font-size:11.5px}
+.track{position:relative;height:44px}
+.months{display:grid;grid-template-columns:170px 1fr}
+.months .mm{position:relative;height:22px}
+.months .mm span{position:absolute;top:0;font-size:11px;color:var(--muted);transform:translateX(4px);font-family:var(--f-mono)}
+.grid-line{position:absolute;top:0;bottom:0;width:1px;background:var(--line)}
+.today{position:absolute;top:0;bottom:0;width:2px;background:var(--bad);z-index:2}
+.today::after{content:"hoje";position:absolute;top:-2px;left:4px;font-size:10.5px;color:var(--bad);font-family:var(--f-mono)}
+.band{position:absolute;top:0;bottom:0;background:var(--warn-soft);opacity:.7}
+.dot{position:absolute;top:50%;width:13px;height:13px;margin:-6.5px 0 0 -6.5px;border-radius:50%;border:2px solid var(--surface);cursor:pointer;z-index:3}
+.dot:hover{transform:scale(1.35)}
+.dia{position:absolute;top:50%;width:12px;height:12px;margin:-6px 0 0 -6px;transform:rotate(45deg);cursor:default;z-index:3;border:2px solid var(--surface)}
+.dia.legal{background:var(--bad)} .dia.externo{background:var(--gap)} .dia.interno{background:var(--fg)}
+.tl-legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted);margin:10px 0}
+.tl-legend i{display:inline-block;width:10px;height:10px;margin-right:5px;vertical-align:-1px}
+.mcount{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-top:14px}
+.mcount div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.mcount b{font-family:var(--f-display);font-size:20px;display:block}
+.mcount span{font-size:12px;color:var(--muted)}
+.mcount div.hot{border-color:var(--bad)}
+.mlist2{margin-top:14px;display:grid;gap:4px;font-size:13px}
+.mlist2 div{display:flex;gap:10px}
+.mlist2 time{font-family:var(--f-mono);color:var(--muted);flex:none;width:150px}
+/* dependências */
+.dep-wrap{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;overflow-x:auto}
+.dep-cols{display:flex;gap:30px;position:relative;z-index:1;min-width:max-content}
+.dep-col{display:flex;flex-direction:column;gap:8px;justify-content:center;width:178px}
+.dep-col h4{margin:0;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.node{all:unset;box-sizing:border-box;cursor:pointer;display:grid;gap:2px;border:1px solid var(--line);border-left:4px solid var(--muted);border-radius:6px;padding:6px 8px;background:var(--bg);font-size:12.5px;line-height:1.3;transition:opacity .15s}
+.node b{font-family:var(--f-mono);font-size:11px;font-weight:500;color:var(--muted)}
+.node.s-concluida{border-left-color:var(--ok)} .node.s-andamento{border-left-color:var(--prog)} .node.s-sem_info{border-left-color:var(--gap)} .node.s-vencida{border-left-color:var(--bad)}
+.node.gargalo{box-shadow:0 0 0 2px var(--bad-soft)}
+.node:focus-visible{outline:2px solid var(--accent)}
+.dep-wrap.focus .node{opacity:.25}
+.dep-wrap.focus .node.on{opacity:1}
+#depsvg{position:absolute;inset:0;pointer-events:none;z-index:0}
+#depsvg path{fill:none;stroke:var(--line);stroke-width:1.6}
+#depsvg path.on{stroke:var(--warn);stroke-width:2.4}
+.garg{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px;margin-bottom:14px}
+.garg div{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--bad);border-radius:6px;padding:8px 10px;font-size:13px}
+.garg b{font-family:var(--f-display);font-size:18px;margin-right:6px}
+/* pessoas */
+.pm{background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow-x:auto}
+.pm table td.n{font-family:var(--f-mono);text-align:center;width:110px}
+.pm table th.n{text-align:center}
+.heat{display:inline-block;min-width:28px;padding:2px 6px;border-radius:4px;cursor:pointer;border:0;font:inherit}
+.heat.h0{color:var(--line);background:transparent;cursor:default}
+.heat.h1{background:var(--prog-soft);color:var(--fg)} .heat.h2{background:color-mix(in srgb,var(--prog) 45%,var(--surface));color:var(--fg)} .heat.h3{background:var(--prog);color:var(--surface)}
+.pdet{margin-top:12px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:13px}
+/* metas (painel do Conselho) */
+.sc{background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow-x:auto}
+.sem{display:inline-block;width:14px;height:14px;border-radius:50%;vertical-align:-2px}
+.sem.r{background:var(--bad)} .sem.a{background:var(--warn)} .sem.g{background:var(--ok)}
+.mini{display:flex;gap:2px;flex-wrap:wrap;max-width:140px}
+.mini i{width:9px;height:9px;border-radius:2px}
+.pc{display:flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:12px}
+.pc .bar{width:70px}
+/* lacunas */
+.lac{display:grid;gap:14px}
+.lbox{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.lbox header{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:8px}
+.lbox h3{margin:0;font-family:var(--f-display);font-size:18px}
+.lbox header span{color:var(--muted);font-size:13px}
+.lbox header button{margin-left:auto}
+.lbox ol{margin:0;padding-left:22px;display:grid;gap:5px;font-size:13.5px}
+.lbox ol small{color:var(--muted)}
+.lbox h4{margin:12px 0 6px;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+
 .foot{margin-top:40px;font-size:12px;color:var(--muted);display:grid;gap:4px}
 @media (max-width:640px){
   thead{display:none}
@@ -209,6 +304,12 @@ dialog h4{margin:0 0 6px;font-size:13px;text-transform:uppercase;letter-spacing:
     <span class="brand">Painel DITES<small id="upd"></small></span>
     <nav>
       <a href="#eap" id="nav-eap">EAP</a>
+      <a href="#bloqueios" id="nav-bloqueios">Bloqueios</a>
+      <a href="#marcos" id="nav-marcos">Marcos</a>
+      <a href="#dependencias" id="nav-dependencias">Dependências</a>
+      <a href="#pessoas" id="nav-pessoas">Pessoas</a>
+      <a href="#metas" id="nav-metas">Metas</a>
+      <a href="#lacunas" id="nav-lacunas">Lacunas</a>
       <a href="#geral" id="nav-geral">Lista</a>
       <a href="#reuniao" id="nav-reuniao">Reunião</a>
     </nav>
@@ -221,8 +322,14 @@ dialog h4{margin:0 0 6px;font-size:13px;text-transform:uppercase;letter-spacing:
       <div class="legend2"><span><i class="c-concluida"></i>Concluída</span><span><i class="c-andamento"></i>Em andamento</span><span><i class="c-nao_iniciada"></i>Não iniciada</span><span><i class="c-sem_info"></i>Falta informação</span><span><i class="c-vencida"></i>Prazo vencido</span><span>Cada quadrado é uma tarefa · clique para ver o detalhe · clique no nome da meta para listar as tarefas</span></div>
       <div class="trunk"></div>
       <div class="eap" id="eap"></div>
-      <div id="tip" hidden></div>
     </div>
+    <div id="v-bloqueios" hidden><div id="bloqueios"></div></div>
+    <div id="v-marcos" hidden><div id="marcos"></div></div>
+    <div id="v-dependencias" hidden><div id="dependencias"></div></div>
+    <div id="v-pessoas" hidden><div id="pessoas"></div></div>
+    <div id="v-metas" hidden><div id="metas"></div></div>
+    <div id="v-lacunas" hidden><div id="lacunas"></div></div>
+
     <div id="v-geral" hidden>
       <div class="tally" id="tally"></div>
       <div class="controls">
@@ -245,6 +352,7 @@ dialog h4{margin:0 0 6px;font-size:13px;text-transform:uppercase;letter-spacing:
     <div class="foot" id="foot"></div>
   </main>
 
+  <div id="tip" hidden></div>
   <div id="changes" hidden><div class="wrap">
     <span><b id="nchg">0</b> alterações nesta reunião (salvas só neste navegador)</span>
     <span id="copyok" role="status"></span>
@@ -391,7 +499,7 @@ function save(){try{localStorage.setItem(DRAFT,JSON.stringify({base:D.atualizado
 function load(){try{const s=JSON.parse(localStorage.getItem(DRAFT)||"null");if(s){chg=s.alteracoes||[];if(s.reuniao){$("rdata").value=s.reuniao.data||today();$("rfrente").value=s.reuniao.frente||"todas";$("rtitulo").value=s.reuniao.titulo||""}}}catch(e){}}
 function refresh(){
   $("changes").hidden=chg.length===0;$("nchg").textContent=chg.length;$("copyok").textContent="";
-  renderGeral();if(!$("v-reuniao").hidden)renderReuniao();if(!$("v-eap").hidden)renderEAP();
+  renderGeral();const cv=Object.keys(VIEWS).find(v=>!$("v-"+v).hidden);if(cv&&cv!=="geral")VIEWS[cv]();
 }
 $("copy").addEventListener("click",()=>{
   const txt="ALTERAÇÕES DO PAINEL DITES\n"+JSON.stringify({base:D.atualizado_em,reuniao:{data:$("rdata").value,frente:$("rfrente").value,titulo:$("rtitulo").value},alteracoes:chg},null,1);
@@ -416,7 +524,12 @@ document.addEventListener("click",e=>{
     ${t.observacao?`<dt>Observação</dt><dd>${esc(t.observacao)}</dd>`:""}</dl>
    <div><h4>Encaminhamentos</h4>${(t.encaminhamentos||[]).length||t.novos.length?(t.encaminhamentos||[]).map(e=>`<p class="enc"><b>${br(e.data)}</b> ${esc(e.texto)}${e.reuniao?` <small>(${esc(e.reuniao)})</small>`:""}</p>`).join("")+t.novos.map(x=>`<p class="enc new"><b>novo</b> ${esc(x)}</p>`).join(""):`<p class="empty">Nenhum ainda.</p>`}</div>
    <div><h4>Histórico</h4><ul class="hist">${(t.historico||[]).slice().reverse().map(h=>`<li><time>${br(h.data)}</time>${esc(h.detalhe||h.evento)}</li>`).join("")}</ul></div>`;
-  $("dlg").showModal();
+  const deps=(D.tarefas.find(x=>x.id===t.id).depende_de||[]),dn=D.tarefas.filter(x=>(x.depende_de||[]).some(d=>d.tarefa===t.id));
+  let ex="";
+  if(t.aguardando)ex+=`<div><h4>Aguardando</h4><p class="enc"><b>${esc(t.aguardando.ator)}</b>: ${esc(t.aguardando.o_que)}, desde ${br(t.aguardando.desde)} ${t.aguardando.status==="proposta"?PROP:""}<br><small>${esc(t.aguardando.origem)}</small></p></div>`;
+  if(deps.length||dn.length)ex+=`<div><h4>Dependências</h4>${deps.map(d=>`<p class="enc">Depende de <button type="button" style="all:unset;cursor:pointer;font-weight:600" data-open="${esc(d.tarefa)}">${esc(d.tarefa)} ${esc(T(d.tarefa).titulo)}</button> ${d.status==="proposta"?PROP:""}<br><small>${esc(d.origem)}</small></p>`).join("")}${dn.length?`<p class="enc">É pré-requisito de: ${dn.map(x=>`<button type="button" style="all:unset;cursor:pointer;font-weight:600" data-open="${esc(x.id)}">${esc(x.id)}</button>`).join(", ")}</p>`:""}</div>`;
+  $("dbody").insertAdjacentHTML("beforeend",ex);
+  if(!$("dlg").open)$("dlg").showModal();
 });
 $("dclose").addEventListener("click",()=>$("dlg").close());
 
@@ -462,12 +575,171 @@ $("eap").addEventListener("mouseover",e=>{
 });
 $("eap").addEventListener("mouseout",e=>{const l=e.target.closest(".link");if(l)hl(false,l);if(e.target.closest("[data-tip]"))$("tip").hidden=true});
 
+/* ---------- utilidades das visões ---------- */
+const PROP=`<span class="prop" title="Proposta a validar">proposta</span>`;
+const dias=iso=>Math.round((new Date(today()+"T12:00:00")-new Date(iso+"T12:00:00"))/864e5);
+const fchip=f=>`<span class="fchip">${esc(D.frentes.find(x=>x.id===f).num?"F"+D.frentes.find(x=>x.id===f).num:"Transv.")}</span>`;
+const stc=t=>vencida(t)?"vencida":t.situacao;
+const ORG=/–|-\s|Equipe|Diretoria|Tesouraria|PROCERGS|DTrib|Orçamento|^\?$|^—$/;
+function pessoas(t){
+  return String(t.responsavel_fonte||"").replace(/\(focal:[^)]*\)/g,"").split(/[,;/]| e /).map(s=>s.replace(/\(.*?\)/g,"").trim()).filter(s=>s&&!ORG.test(s));
+}
+
+/* ---------- 1. Bloqueios externos ---------- */
+function renderBloqueios(){
+  const all=D.tarefas.map(eff).filter(t=>t.aguardando&&t.situacao!=="concluida");
+  const g={};all.forEach(t=>(g[t.aguardando.ator]=g[t.aguardando.ator]||[]).push(t));
+  const lanes=Object.entries(g).sort((a,b)=>b[1].length-a[1].length||Math.max(...b[1].map(t=>dias(t.aguardando.desde)))-Math.max(...a[1].map(t=>dias(t.aguardando.desde))));
+  $("bloqueios").innerHTML=`<div class="vh"><h2>Quem precisa agir</h2><p>${all.length} tarefas aguardam ${lanes.length} atores fora da Tesouraria. Ordenado por quantidade de pendências. Todas as ligações são propostas a validar.</p></div><div class="lanes">${lanes.map(([ator,l])=>{
+    const max=Math.max(...l.map(t=>dias(t.aguardando.desde)));
+    return `<div class="lane"><div class="who"><b>${esc(ator)}</b><span>${l.length} ${l.length>1?"pendências":"pendência"} · a mais antiga há ${max} dias</span></div><div class="items">${l.sort((a,b)=>a.aguardando.desde<b.aguardando.desde?-1:1).map(t=>{const n=dias(t.aguardando.desde);return `<div class="bk"><button type="button" class="t" data-open="${esc(t.id)}">${esc(t.id)} · ${esc(t.titulo)}</button><div>${esc(t.aguardando.o_que)}</div><div class="m">${fchip(t.frente)}<span>desde ${br(t.aguardando.desde)}</span><span class="days ${n>60?"d60":n>30?"d30":""}">${n} dias</span>${t.aguardando.status==="proposta"?PROP:""}</div><div class="m">${esc(t.aguardando.origem)}</div></div>`}).join("")}</div></div>`}).join("")}</div>`;
+}
+
+/* ---------- 2. Marcos ---------- */
+const TL0="2026-07-01",TL1="2027-06-30";
+const pos=iso=>{const a=new Date(TL0+"T12:00:00"),b=new Date(TL1+"T12:00:00"),x=new Date(iso+"T12:00:00");return Math.max(0,Math.min(100,100*(x-a)/(b-a)))};
+const MCOR={concluida:"var(--ok)",andamento:"var(--prog)",nao_iniciada:"var(--muted)",sem_info:"var(--gap)",vencida:"var(--bad)"};
+function renderMarcos(){
+  const all=D.tarefas.map(eff);const months=[];
+  for(let d=new Date(TL0+"T12:00:00");d<=new Date(TL1+"T12:00:00");d.setMonth(d.getMonth()+1))months.push(d.toISOString().slice(0,7));
+  const MN=["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+  const gl=months.map(m=>`<div class="grid-line" style="left:${pos(m+"-01")}%"></div>`).join("");
+  const bands=D.marcos.filter(m=>m.fim).map(m=>`<div class="band" style="left:${pos(m.data)}%;width:${pos(m.fim)-pos(m.data)}%" title="${esc(m.titulo)}"></div>`).join("");
+  const now=`<div class="today" style="left:${pos(today())}%"></div>`;
+  const row=(lb,sub,inner)=>`<div class="tl-row"><div class="lb">${lb}<small>${sub}</small></div><div class="track">${gl}${bands}${now}${inner}</div></div>`;
+  const rows=D.frentes.map(fr=>{
+    const l=all.filter(t=>t.frente===fr.id&&t.prazo);
+    const sp=all.filter(t=>t.frente===fr.id&&!t.prazo).length;
+    return row(esc(frenteNome(fr.id)),`${l.length} com prazo · ${sp} sem prazo`,l.map(t=>`<button type="button" class="dot" style="left:${pos(t.prazo)}%;background:${MCOR[stc(t)]}" data-open="${esc(t.id)}" data-tip="${esc(t.id+" · "+t.titulo+" · "+br(t.prazo))}" aria-label="${esc(t.id+" "+t.titulo)}"></button>`).join(""));
+  }).join("");
+  const ext=row("Marcos externos e legais","PROCERGS, LC 227, Estados",D.marcos.filter(m=>!m.fim).map(m=>`<span class="dia ${m.tipo}" style="left:${pos(m.data)}%" data-tip="${esc(br(m.data)+" · "+m.titulo+" ("+m.origem+")")}"></span>`).join(""));
+  const per={};all.filter(t=>t.prazo&&t.situacao!=="concluida").forEach(t=>{const k=t.prazo.slice(0,7);per[k]=(per[k]||0)+1});
+  const mk={};D.marcos.filter(m=>!m.fim).forEach(m=>{const k=m.data.slice(0,7);mk[k]=(mk[k]||0)+1});
+  const foco=months.filter(m=>m>=today().slice(0,7)&&m<="2027-03");
+  $("marcos").innerHTML=`<div class="vh"><h2>Linha do tempo até jun/2027</h2><p>Cada ponto é uma tarefa no seu prazo; losangos são marcos externos ou legais; a faixa amarela é o encerramento do exercício nos entes (dez–jan). ${all.filter(t=>!t.prazo).length} tarefas ainda não têm prazo e não aparecem.</p></div>
+  <div class="tl-legend"><span><i style="background:var(--bad);transform:rotate(45deg)"></i>Prazo legal</span><span><i style="background:var(--gap);transform:rotate(45deg)"></i>Entrega externa</span><span><i style="background:var(--fg);transform:rotate(45deg)"></i>Marco interno</span><span><i style="background:var(--warn-soft)"></i>Encerramento do exercício nos entes</span></div>
+  <div class="tl"><div class="tl-in"><div class="months"><div></div><div class="mm">${months.map(m=>`<span style="left:${pos(m+"-01")}%">${MN[+m.slice(5)-1]}/${m.slice(2,4)}</span>`).join("")}</div></div>${rows}${ext}</div></div>
+  <div class="mcount">${foco.map(m=>{const n=(per[m]||0);return `<div class="${n+(mk[m]||0)>=8?"hot":""}"><b>${n}</b><span>tarefas vencem em ${MN[+m.slice(5)-1]}/${m.slice(2,4)}${mk[m]?` · ${mk[m]} marcos externos`:""}</span></div>`}).join("")}</div>
+  <div class="mlist2">${D.marcos.map(m=>`<div><time>${br(m.data)}${m.fim?" → "+br(m.fim):""}</time><span>${esc(m.titulo)} <small style="color:var(--muted)">(${esc(m.origem)})</small></span></div>`).join("")}</div>`;
+}
+
+/* ---------- 3. Dependências ---------- */
+function renderDeps(){
+  const all=Object.fromEntries(D.tarefas.map(t=>[t.id,eff(t)]));
+  const edges=[];D.tarefas.forEach(t=>(t.depende_de||[]).forEach(d=>edges.push([d.tarefa,t.id,d])));
+  const ids=[...new Set(edges.flat().filter(x=>typeof x==="string"))];
+  const prev=id=>edges.filter(e=>e[1]===id).map(e=>e[0]);
+  const memo={};const depth=id=>memo[id]??(memo[id]=prev(id).length?1+Math.max(...prev(id).map(depth)):0);
+  const down=id=>{const s=new Set(),st=[id];while(st.length){const x=st.pop();edges.filter(e=>e[0]===x).forEach(e=>{if(!s.has(e[1])){s.add(e[1]);st.push(e[1])}})}return s};
+  const cols=[];ids.forEach(id=>(cols[depth(id)]=cols[depth(id)]||[]).push(id));
+  cols.forEach(c=>c.sort((a,b)=>all[a].frente.localeCompare(all[b].frente)||a.localeCompare(b,undefined,{numeric:true})));
+  const gar=ids.map(id=>[id,down(id).size]).sort((a,b)=>b[1]-a[1]).slice(0,4);
+  const gset=new Set(gar.filter(g=>g[1]>=3).map(g=>g[0]));
+  const NOM=["Começo da cadeia","2º passo","3º passo","4º passo","5º passo","6º passo"];
+  $("dependencias").innerHTML=`<div class="vh"><h2>O que trava o quê</h2><p>${edges.length} ligações entre ${ids.length} tarefas, lidas da esquerda para a direita. Passe o mouse (ou foque) numa tarefa para ver o que vem antes e depois dela. Todas as ligações são propostas a validar; a origem aparece no detalhe da tarefa.</p></div>
+  <div class="garg">${gar.map(([id,n])=>`<div><b>${n}</b>tarefas dependem, direta ou indiretamente, de <button type="button" class="t" style="all:unset;cursor:pointer;font-weight:600" data-open="${esc(id)}">${esc(id)} ${esc(all[id].titulo)}</button></div>`).join("")}</div>
+  <div class="dep-wrap" id="depwrap"><svg id="depsvg"></svg><div class="dep-cols">${cols.map((c,i)=>`<div class="dep-col"><h4>${NOM[i]||i+1+"º passo"}</h4>${c.map(id=>`<button type="button" class="node s-${stc(all[id])}${gset.has(id)?" gargalo":""}" id="n-${esc(id)}" data-node="${esc(id)}" data-open="${esc(id)}"><b>${esc(id)} · ${fchip(all[id].frente)}</b>${esc(all[id].titulo)}</button>`).join("")}</div>`).join("")}</div></div>`;
+  window._edges=edges;requestAnimationFrame(drawDeps);
+}
+function drawDeps(){
+  const w=$("depwrap");if(!w||$("v-dependencias").hidden)return;const svg=$("depsvg");const R=w.getBoundingClientRect();
+  svg.setAttribute("width",w.scrollWidth);svg.setAttribute("height",w.scrollHeight);
+  svg.innerHTML=(window._edges||[]).map(([a,b])=>{const A=document.getElementById("n-"+a),B=document.getElementById("n-"+b);if(!A||!B)return"";
+    const ra=A.getBoundingClientRect(),rb=B.getBoundingClientRect();
+    const x1=ra.right-R.left+w.scrollLeft,y1=ra.top+ra.height/2-R.top,x2=rb.left-R.left+w.scrollLeft,y2=rb.top+rb.height/2-R.top,mx=(x1+x2)/2;
+    return `<path data-a="${esc(a)}" data-b="${esc(b)}" d="M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}"/>`}).join("");
+}
+function depFocus(id){
+  const w=$("depwrap");if(!w)return;
+  if(!id){w.classList.remove("focus");w.querySelectorAll(".on").forEach(e=>e.classList.remove("on"));return}
+  const E=window._edges||[];const on=new Set([id]);
+  let st=[id];while(st.length){const x=st.pop();E.filter(e=>e[1]===x).forEach(e=>{if(!on.has(e[0])){on.add(e[0]);st.push(e[0])}})}
+  st=[id];const dn=new Set();while(st.length){const x=st.pop();E.filter(e=>e[0]===x).forEach(e=>{if(!dn.has(e[1])){dn.add(e[1]);st.push(e[1])}})}
+  dn.forEach(x=>on.add(x));w.classList.add("focus");
+  w.querySelectorAll(".node").forEach(n=>n.classList.toggle("on",on.has(n.dataset.node)));
+  w.querySelectorAll("path").forEach(p=>p.classList.toggle("on",on.has(p.dataset.a)&&on.has(p.dataset.b)));
+}
+$("dependencias").addEventListener("mouseover",e=>{const n=e.target.closest(".node");if(n)depFocus(n.dataset.node)});
+$("dependencias").addEventListener("mouseout",e=>{if(e.target.closest(".node"))depFocus(null)});
+$("dependencias").addEventListener("focusin",e=>{const n=e.target.closest(".node");if(n)depFocus(n.dataset.node)});
+$("dependencias").addEventListener("focusout",()=>depFocus(null));
+window.addEventListener("resize",()=>{if(!$("v-dependencias").hidden)drawDeps()});
+
+/* ---------- 4. Pessoas ---------- */
+let pSel=null;
+function renderPessoas(){
+  const all=D.tarefas.map(eff).filter(t=>t.situacao!=="concluida");const P={};
+  all.forEach(t=>pessoas(t).forEach(p=>{P[p]=P[p]||{};(P[p][t.frente]=P[p][t.frente]||[]).push(t)}));
+  const rows=Object.entries(P).map(([p,o])=>[p,o,Object.values(o).flat()]).sort((a,b)=>b[2].length-a[2].length||a[0].localeCompare(b[0]));
+  const semNome=all.filter(t=>!pessoas(t).length).length;
+  const h=n=>n===0?"h0":n<=2?"h1":n<=4?"h2":"h3";
+  $("pessoas").innerHTML=`<div class="vh"><h2>Carga por pessoa</h2><p>Tarefas em aberto em que cada pessoa é citada pela fonte (não é atribuição formal). ${rows.length} pessoas; ${semNome} tarefas em aberto não citam ninguém, ou só equipes e órgãos. Clique num número para ver as tarefas.</p></div>
+  <div class="pm"><table><thead><tr><th>Pessoa</th>${D.frentes.map(f=>`<th class="n">${esc(f.num?"Frente "+f.num:"Transv.")}</th>`).join("")}<th class="n">Total</th><th class="n">Vencidas</th><th class="n">Frentes</th></tr></thead><tbody>${rows.map(([p,o,l])=>`<tr><td>${esc(p)}</td>${D.frentes.map(f=>{const n=(o[f.id]||[]).length;return `<td class="n"><button type="button" class="heat ${h(n)}" ${n?`data-ps="${esc(p)}" data-pf="${f.id}"`:"disabled"}>${n||"·"}</button></td>`}).join("")}<td class="n"><button type="button" class="heat ${h(l.length)}" data-ps="${esc(p)}" data-pf="">${l.length}</button></td><td class="n">${l.filter(vencida).length||"·"}</td><td class="n">${Object.keys(o).length}</td></tr>`).join("")}</tbody></table></div><div class="pdet" id="pdet" ${pSel?"":"hidden"}></div>`;
+  if(pSel)showP(...pSel);
+}
+function showP(p,f){
+  pSel=[p,f];const l=D.tarefas.map(eff).filter(t=>t.situacao!=="concluida"&&pessoas(t).includes(p)&&(!f||t.frente===f));
+  $("pdet").hidden=false;$("pdet").innerHTML=`<b>${esc(p)}</b>${f?" · "+esc(frenteNome(f)):""} · ${l.length} tarefas<ul class="mlist" style="border:0;margin-top:6px">${l.map(t=>`<li><i class="c-${stc(t)}"></i><button type="button" data-open="${esc(t.id)}">${esc(t.id)} ${esc(t.titulo)} <small style="color:var(--muted)">· ${esc(t.prazo_texto)}</small></button></li>`).join("")}</ul>`;
+}
+$("pessoas").addEventListener("click",e=>{const b=e.target.closest("[data-ps]");if(b)showP(b.dataset.ps,b.dataset.pf)});
+
+/* ---------- 5. Metas (Conselho) ---------- */
+function renderMetas(){
+  const all=D.tarefas.map(eff);const h=today();
+  const rows=D.metas.map(m=>{
+    const l=all.filter(t=>t.meta===m.codigo);const v=l.filter(vencida).length,s=l.filter(t=>t.situacao==="sem_info").length,p=pct(l);
+    const prox=l.filter(t=>t.prazo&&t.situacao!=="concluida"&&t.prazo>=h).sort((a,b)=>a.prazo<b.prazo?-1:1)[0];
+    const near=dias(m.prazo)>-45;
+    const sem=v?"r":(s||(near&&p<50))?"a":"g";
+    const why=v?`${v} tarefa(s) com prazo vencido`:s?`${s} tarefa(s) sem informação`:near&&p<50?"prazo da meta em menos de 45 dias e menos de 50% concluído":"sem alertas";
+    return {m,l,v,s,p,prox,sem,why};
+  });
+  const ord={r:0,a:1,g:2};rows.sort((a,b)=>ord[a.sem]-ord[b.sem]||(a.m.prazo<b.m.prazo?-1:1));
+  const cnt=k=>rows.filter(r=>r.sem===k).length;
+  $("metas").innerHTML=`<div class="vh"><h2>Metas apresentadas ao Conselho Superior</h2><p><span class="sem r"></span> ${cnt("r")} com atraso · <span class="sem a"></span> ${cnt("a")} em atenção · <span class="sem g"></span> ${cnt("g")} em dia. Critério: vermelho se há tarefa vencida; amarelo se falta informação ou se o prazo da meta está a menos de 45 dias com menos de 50% concluído.</p></div>
+  <div class="sc"><table><thead><tr><th></th><th>Meta</th><th>Frente</th><th>Prazo</th><th>Concluído</th><th>Tarefas</th><th>Próximo prazo</th><th>Principal risco</th></tr></thead><tbody>${rows.map(r=>`<tr><td title="${esc(r.why)}"><span class="sem ${r.sem}"></span></td><td><b>${esc(r.m.nome)}</b> <span class="code">${r.m.codigo}</span><br><small style="color:var(--muted)">${esc(r.why)}</small></td><td>${esc(frenteNome(r.m.frente))}</td><td class="pz">${br(r.m.prazo)}</td><td><span class="pc"><span class="bar"><span style="width:${r.p}%"></span></span>${r.p}%</span></td><td><span class="mini">${r.l.map(t=>`<i class="c-${stc(t)}" title="${esc(t.id+" "+t.titulo)}"></i>`).join("")}</span></td><td>${r.prox?`<button type="button" style="all:unset;cursor:pointer" data-open="${esc(r.prox.id)}"><span class="pz">${br(r.prox.prazo)}</span><br><small>${esc(r.prox.id+" "+r.prox.titulo)}</small></button>`:`<small style="color:var(--muted)">sem prazo futuro definido</small>`}</td><td><small>${esc(r.m.risco?.texto||"")}</small> ${r.m.risco?.status==="proposta"?PROP:""}</td></tr>`).join("")}</tbody></table></div>`;
+}
+
+/* ---------- 6. Lacunas ---------- */
+function lacunas(){
+  const all=D.tarefas.map(eff);const G={};
+  const add=(f,k,t,q)=>{G[f]=G[f]||{falta:[],validar:[]};G[f][k].push({t,q})};
+  all.forEach(t=>{
+    if(t.situacao==="concluida")return;
+    const q=[];
+    if(!pessoas(t).length&&/^(\?|—)$/.test(String(t.responsavel_fonte).trim()))q.push("Quem é o responsável?");
+    if(!t.prazo)q.push("Qual é o prazo?");
+    if(t.situacao==="sem_info")q.push("Qual é a situação atual?");
+    if(/\?/.test(t.observacao||""))q.push(t.observacao);
+    if(q.length)add(t.frente,"falta",t,q.join(" "));
+    const byO={};(t.depende_de||[]).filter(d=>d.status==="proposta").forEach(d=>(byO[d.origem]=byO[d.origem]||[]).push(d.tarefa));
+    Object.entries(byO).forEach(([o,ds])=>add(t.frente,"validar",t,`Confirmar que depende de ${ds.join(", ")} (${o}).`));
+    if(t.aguardando?.status==="proposta")add(t.frente,"validar",t,`Confirmar que aguarda ${t.aguardando.ator}: ${t.aguardando.o_que}, desde ${br(t.aguardando.desde)}.`);
+  });
+  D.metas.filter(m=>m.risco?.status==="proposta").forEach(m=>add(m.frente,"validar",{id:m.codigo,titulo:m.nome},`Confirmar o principal risco: ${m.risco.texto}.`));
+  return G;
+}
+function renderLacunas(){
+  const G=lacunas();
+  $("lacunas").innerHTML=`<div class="vh"><h2>O que perguntar a cada coordenador</h2><p>Perguntas geradas a partir do que falta na base e das propostas ainda não validadas. Use "Copiar perguntas" para mandar ao ponto focal.</p></div><div class="lac">${D.frentes.filter(f=>G[f.id]).map(f=>{const g=G[f.id];return `<div class="lbox"><header><h3>${esc(frenteNome(f.id))}</h3><span>${esc(f.ponto_focal)} · ${g.falta.length} lacunas · ${g.validar.length} propostas a validar</span><button class="btn small ghost" type="button" data-copyq="${f.id}">Copiar perguntas</button><span class="copyq" id="cq-${f.id}" role="status" style="font-size:12px;color:var(--ok)"></span></header>${g.falta.length?`<h4>Falta informação</h4><ol>${g.falta.map(x=>`<li><button type="button" style="all:unset;cursor:pointer;font-weight:600" data-open="${esc(x.t.id)}">${esc(x.t.id)} ${esc(x.t.titulo)}</button> <small>${esc(x.q)}</small></li>`).join("")}</ol>`:""}${g.validar.length?`<h4>Propostas a validar</h4><ol>${g.validar.map(x=>`<li><b>${esc(x.t.id)}</b> ${esc(x.t.titulo)}. <small>${esc(x.q)}</small></li>`).join("")}</ol>`:""}</div>`}).join("")}</div>`;
+}
+$("lacunas").addEventListener("click",e=>{
+  const b=e.target.closest("[data-copyq]");if(!b)return;const f=b.dataset.copyq;const g=lacunas()[f];const fr=D.frentes.find(x=>x.id===f);
+  const txt=`Painel DITES — ${frenteNome(f)} (${fr.ponto_focal})\n\nFALTA INFORMAÇÃO\n`+g.falta.map((x,i)=>`${i+1}. ${x.t.id} ${x.t.titulo}: ${x.q}`).join("\n")+`\n\nPROPOSTAS A VALIDAR\n`+g.validar.map((x,i)=>`${i+1}. ${x.t.id} ${x.t.titulo}: ${x.q}`).join("\n");
+  navigator.clipboard.writeText(txt).then(()=>{$("cq-"+f).textContent="Copiado."}).catch(()=>{$("cq-"+f).textContent="Não foi possível copiar."});
+});
+
+/* tooltip comum às visões */
+document.addEventListener("mouseover",e=>{const s=e.target.closest("#v-marcos [data-tip]");if(s){const tip=$("tip");tip.textContent=s.dataset.tip;tip.hidden=false;const r=s.getBoundingClientRect();tip.style.left=Math.min(r.left,innerWidth-290)+"px";tip.style.top=(r.bottom+6)+"px"}});
+document.addEventListener("mouseout",e=>{if(e.target.closest("#v-marcos [data-tip]"))$("tip").hidden=true});
+
+const VIEWS={eap:renderEAP,bloqueios:renderBloqueios,marcos:renderMarcos,dependencias:renderDeps,pessoas:renderPessoas,metas:renderMetas,lacunas:renderLacunas,geral:renderGeral,reuniao:renderReuniao};
+
 /* ---------- navegação ---------- */
 function route(){
-  const r=location.hash==="#reuniao"?"reuniao":location.hash==="#geral"?"geral":"eap";
-  for(const v of ["eap","geral","reuniao"]){$("v-"+v).hidden=v!==r;const a=$("nav-"+v);v===r?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")}
-  $("tip").hidden=true;
-  r==="reuniao"?renderReuniao():r==="geral"?renderGeral():renderEAP();
+  const h=location.hash.slice(1);const r=VIEWS[h]?h:"eap";
+  for(const v of Object.keys(VIEWS)){$("v-"+v).hidden=v!==r;const a=$("nav-"+v);v===r?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")}
+  $("tip").hidden=true;VIEWS[r]();
 }
 function start(){
   $("upd").textContent="dados de "+br(D.atualizado_em);
